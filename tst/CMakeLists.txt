@@ -1,4 +1,4 @@
-set(Test_SRCS AllTests.cpp testQueue.cpp)
+set(Test_SRCS AllTests.cpp testQueue.cpp fff.h)
 
 include_directories($ENV{CPPUTEST_HOME_INCLUDE})
 include_directories(${PROJECT_SOURCE_DIR}/include)
