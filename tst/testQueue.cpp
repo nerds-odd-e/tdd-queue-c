@@ -71,3 +71,14 @@ TEST(Queue, pushPushPopAndPop) {
     CHECK_EQUAL(0, q->size)
 }
 
+TEST(Queue, pushPopPushAndPop) {
+    queue_push(q, 10);
+    int value = 0;
+    queue_pop(q, &value);
+    queue_push(q, 20);
+
+    queue_pop(q, &value);
+
+    CHECK_EQUAL(20, value)
+}
+
