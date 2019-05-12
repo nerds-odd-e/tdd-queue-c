@@ -4,9 +4,11 @@ extern "C" {
 #include "queue.h"
 }
 
-TEST_GROUP(Queue){
+TEST_GROUP(Queue) {
+    queue * q;
 
     void setup() {
+        q = queue_init();
     }
 
     void teardown() {
@@ -14,8 +16,14 @@ TEST_GROUP(Queue){
 };
 
 TEST(Queue, init) {
-    queue* q = queue_init();
-    CHECK_EQUAL(0, q->size);
+    CHECK_EQUAL(0, q->size)
+}
+
+TEST(Queue, push) {
+    int code = queue_push(q, 10);
+
+    CHECK_TRUE(!code)
+    CHECK_EQUAL(1, q->size)
 }
 
 

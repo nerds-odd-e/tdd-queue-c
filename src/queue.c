@@ -8,3 +8,8 @@ queue * queue_init() {
     }
     return q;
 }
+
+int queue_push(queue *q, int value) {
+    q->size++;
+    return 0;
+}

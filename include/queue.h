@@ -7,4 +7,6 @@ typedef struct {
 
 queue* queue_init();
 
+int queue_push(queue* q, int value);
+
 #endif //QUEUE_QUEUE_H
