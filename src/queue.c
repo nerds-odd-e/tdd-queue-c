@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 queue * queue_init() {
-    queue* q = (queue *)malloc(sizeof(queue));
+    queue* q = queue_malloc();
     if (q) {
         q->size = 0;
         q->readCursor = 0;

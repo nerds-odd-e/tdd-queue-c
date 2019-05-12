@@ -2,17 +2,24 @@
 
 extern "C" {
 #include "queue.h"
+#include "fff.h"
 }
+
+DEFINE_FFF_GLOBALS
+FAKE_VALUE_FUNC(queue*, queue_malloc)
 
 TEST_GROUP(Queue) {
     queue *q;
     int value;
     int code;
+    queue malloc_q;
 
     void setup() {
+        queue_malloc_fake.return_val = &malloc_q;
         q = queue_init();
         value = 0;
         code = -1;
+        RESET_FAKE(queue_malloc)
     }
 
     void teardown() {
@@ -124,3 +131,12 @@ TEST(Queue, canStillPopAfterPopToMaxSize) {
     CHECK_EQUAL(15, value)
 }
 
+TEST(Queue, initShouldMalloc) {
+    queue malloc_q;
+    queue_malloc_fake.return_val = &malloc_q;
+
+    q = queue_init();
+
+    CHECK_EQUAL(1, queue_malloc_fake.call_count)
+    CHECK_EQUAL(&malloc_q, q)
+}

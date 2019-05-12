@@ -12,6 +12,8 @@ typedef struct {
     int values[MAX_LEN];
 } queue;
 
+queue * queue_malloc();
+
 queue* queue_init();
 
 int queue_push(queue* q, int value);

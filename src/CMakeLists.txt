@@ -1,4 +1,4 @@
-set(Main_SRCS main.c ../include/queue.h queue.c)
+set(Main_SRCS main.c queue.c queue_malloc.c)
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
