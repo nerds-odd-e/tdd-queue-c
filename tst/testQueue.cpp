@@ -5,7 +5,7 @@ extern "C" {
 }
 
 TEST_GROUP(Queue) {
-    queue * q;
+    queue *q;
 
     void setup() {
         q = queue_init();
@@ -56,5 +56,18 @@ TEST(Queue, pushPushAndPop) {
     CHECK_EQUAL(10, value)
     CHECK_TRUE(!code)
     CHECK_EQUAL(1, q->size)
+}
+
+TEST(Queue, pushPushPopAndPop) {
+    queue_push(q, 10);
+    queue_push(q, 15);
+    int value = 0;
+    queue_pop(q, &value);
+
+    int code = queue_pop(q, &value);
+
+    CHECK_EQUAL(15, value)
+    CHECK_TRUE(!code)
+    CHECK_EQUAL(0, q->size)
 }
 
