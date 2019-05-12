@@ -26,7 +26,8 @@ int queue_pop(queue *q, int *value) {
         return QUEUE_EMPTY;
     }
 
+    *value = q->values[q->readCursor];
+    q->readCursor = (q->readCursor + 1) % MAX_LEN;
     q->size--;
-    *value = q->values[q->readCursor++];
     return 0;
 }
