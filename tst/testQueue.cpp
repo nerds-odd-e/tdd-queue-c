@@ -140,3 +140,12 @@ TEST(Queue, initShouldMalloc) {
     CHECK_EQUAL(1, queue_malloc_fake.call_count)
     CHECK_EQUAL(&malloc_q, q)
 }
+
+TEST(Queue, initShouldReturnNullIfMallocFailed) {
+    queue_malloc_fake.return_val = NULL;
+
+    q = queue_init();
+
+    CHECK_EQUAL(1, queue_malloc_fake.call_count)
+    CHECK_EQUAL(NULL, q)
+}
