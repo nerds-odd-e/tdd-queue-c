@@ -82,3 +82,13 @@ TEST(Queue, pushPopPushAndPop) {
     CHECK_EQUAL(20, value)
 }
 
+TEST(Queue, pushToMaxSize) {
+    for (int i = 0; i < MAX_LEN; ++i) {
+        queue_push(q, 10);
+    }
+
+    int code = queue_push(q, 15);
+
+    CHECK_EQUAL(QUEUE_FULL, code)
+}
+

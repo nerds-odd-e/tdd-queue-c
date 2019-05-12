@@ -1,13 +1,15 @@
 #ifndef QUEUE_QUEUE_H
 #define QUEUE_QUEUE_H
 
+#define MAX_LEN 100
 #define QUEUE_EMPTY -1
+#define QUEUE_FULL -2
 
 typedef struct {
     int size;
     int readCursor;
     int writeCursor;
-    int values[100];
+    int values[MAX_LEN];
 } queue;
 
 queue* queue_init();
