@@ -26,4 +26,15 @@ TEST(Queue, push) {
     CHECK_EQUAL(1, q->size)
 }
 
+TEST(Queue, popAfterPush) {
+    queue_push(q, 10);
+    int value = 0;
+
+    int code = queue_pop(q, &value);
+
+    CHECK_EQUAL(10, value)
+    CHECK_TRUE(!code)
+    CHECK_EQUAL(0, q->size)
+}
+
 
