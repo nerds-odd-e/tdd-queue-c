@@ -5,6 +5,7 @@
 
 typedef struct {
     int size;
+    int cursor;
     int values[100];
 } queue;
 
