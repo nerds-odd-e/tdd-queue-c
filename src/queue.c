@@ -15,7 +15,8 @@ int queue_push(queue *q, int value) {
     if(q->size == MAX_LEN) {
         return QUEUE_FULL;
     }
-    q->values[q->writeCursor++] = value;
+    q->values[q->writeCursor] = value;
+    q->writeCursor = (q->writeCursor + 1) % MAX_LEN;
     q->size++;
     return 0;
 }

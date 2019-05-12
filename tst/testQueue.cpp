@@ -92,3 +92,16 @@ TEST(Queue, pushToMaxSize) {
     CHECK_EQUAL(QUEUE_FULL, code)
 }
 
+TEST(Queue, canStillPushIfPopAfterPushToMaxSize) {
+    for (int i = 0; i < MAX_LEN; ++i) {
+        queue_push(q, 10);
+    }
+    int value = 0;
+    queue_pop(q, &value);
+
+    int code = queue_push(q, 15);
+
+    CHECK_TRUE(!code)
+    CHECK_EQUAL(15, q->values[0])
+}
+
