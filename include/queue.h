@@ -1,6 +1,8 @@
 #ifndef QUEUE_QUEUE_H
 #define QUEUE_QUEUE_H
 
+#define QUEUE_EMPTY -1
+
 typedef struct {
     int size;
     int values[100];

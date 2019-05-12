@@ -16,6 +16,10 @@ int queue_push(queue *q, int value) {
 }
 
 int queue_pop(queue *q, int *value) {
+    if (q->size == 0) {
+        return QUEUE_EMPTY;
+    }
+
     q->size--;
     *value = q->values[q->size];
     return 0;
